@@ -1,5 +1,7 @@
 #! /opt/homebrew/bin/node
 const http = require('http')
+
+// node hello.js 127.0.0.1 8080
 const args = process.argv;
 const getConfig = require('./config');
 
