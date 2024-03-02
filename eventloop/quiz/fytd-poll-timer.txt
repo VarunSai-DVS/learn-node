@@ -1,3 +1,15 @@
 - Explain the order of execution in terms of the event loop for eventloop/poll_timer.js.
-- Will the order of execution change if the delay in the while loop is changed from 10s to 150s? Why or why not?
+
+1. setTimeout is put into timers queue of event loop.
+2. Callback passed to someAsyncFunction is executed.
+3. After the file read completed, it goes to poll and then moved to pending callbacks this one gets
+   priority since it has I/O.
+
+- Will the order of execution change if the delay in the while loop is changed from 10s to 150s?
+ Why or why not?
+
+1. Order doesn't change since the callbacks movement from timers to pending_callbacks is delayed.
+
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+1. If we decrease to 0, the order changes, since the call moves to pending_callbacks queue even before the other callback.

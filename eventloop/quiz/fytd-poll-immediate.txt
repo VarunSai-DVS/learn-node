@@ -1,2 +1,13 @@
 - Explain the order of execution in terms of the event loop for eventloop/immediate.js.
+
+Error
+I was scheduled to run immediately
+1ms have passed since I was scheduled
+
+1. The I/O operation is performed.
+2. The callback function is pushed to the Queue and executed since it is the only one.
+3. Inside the callback function two new callbacks are invoked, which are the timeout and the check.
+4. After the check call back has been executed, the timer callback is executed.
+
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+No change as the check callback takes priority over timer callback.

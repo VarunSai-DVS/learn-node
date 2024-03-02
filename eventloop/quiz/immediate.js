@@ -6,8 +6,10 @@ fs.readFile('./data/test.txt', function(err, data) {
   while (Date.now() - startCallback < 10) {
     // do nothing
   }
-  if (err) console.log('Error');
-  else console.log(data);
+  setTimeout( () => {
+    if (err) console.log('Error');
+    else console.log(data);
+  }, 0);
 
   const timeoutScheduled = Date.now();
   setTimeout(() => {
